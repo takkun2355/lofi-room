@@ -1,5 +1,8 @@
 <template>
-    <div class="seat">
+    <div
+    class="seat"
+    @click="emit('select')"
+    >
 
         <div class="number">
             席{{ id }}
@@ -18,70 +21,47 @@
 
 <style scoped>
 
-.seat{
+    .seat{
+        width:220px;
+        height:140px;
+        background:#1f2937;
+        border-radius:16px;
+        padding:16px;
+        display:flex;
+        flex-direction:column;
+        gap:10px;
+        transition:.2s;
+    }
 
-width:220px;
+    .seat:hover{
+        transform:translateY(-4px);
+        background:#293548;
+    }
 
-height:140px;
+    .number{
+        opacity:.6;
+        font-size:14px;
+    }
 
-background:#1f2937;
+    .user{
+        font-size:20px;
+        font-weight:bold;
+    }
 
-border-radius:16px;
-
-padding:16px;
-
-display:flex;
-
-flex-direction:column;
-
-gap:10px;
-
-transition:.2s;
-
-}
-
-.seat:hover{
-
-transform:translateY(-4px);
-
-background:#293548;
-
-}
-
-.number{
-
-opacity:.6;
-
-font-size:14px;
-
-}
-
-.user{
-
-font-size:20px;
-
-font-weight:bold;
-
-}
-
-.task{
-
-opacity:.8;
-
-}
+    .task{
+        opacity:.8;
+    }
 
 </style>
 
 <script setup lang="ts">
 
-defineProps<{
-
-    id: number;
-
-    user: string;
-
-    task: string;
-
-}>()
+    defineProps<{
+        id: number;
+        user: string;
+        task: string;
+    }>()
+    
+    const emit = defineEmits(['select'])
 
 </script>
