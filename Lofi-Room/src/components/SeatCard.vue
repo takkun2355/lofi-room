@@ -1,15 +1,19 @@
 <template>
+    <div class="seat">
 
-<div class="seat">
+        <div class="number">
+            席{{ id }}
+        </div>
 
-<h3>席01</h3>
+        <div class="user">
+            {{ user }}
+        </div>
 
-<p>Takkun2355</p>
+        <div class="task">
+            {{ task }}
+        </div>
 
-<p>Test</p>
-
-</div>
-
+    </div>
 </template>
 
 <style scoped>
@@ -26,8 +30,58 @@ border-radius:16px;
 
 padding:16px;
 
-box-shadow:0 0 20px rgba(0,0,0,.3);
+display:flex;
+
+flex-direction:column;
+
+gap:10px;
+
+transition:.2s;
+
+}
+
+.seat:hover{
+
+transform:translateY(-4px);
+
+background:#293548;
+
+}
+
+.number{
+
+opacity:.6;
+
+font-size:14px;
+
+}
+
+.user{
+
+font-size:20px;
+
+font-weight:bold;
+
+}
+
+.task{
+
+opacity:.8;
 
 }
 
 </style>
+
+<script setup lang="ts">
+
+defineProps<{
+
+    id: number;
+
+    user: string;
+
+    task: string;
+
+}>()
+
+</script>

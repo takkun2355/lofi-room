@@ -1,47 +1,83 @@
 <template>
-  <main>
+<main>
 
-    <h1>📚 Lofi Room</h1>
+<h1>📚 Lofi Room</h1>
 
-    <p>Virtual Library</p>
+<div class="grid">
 
-    <SeatCard />
+<SeatCard
 
-  </main>
+v-for="seat in seats"
+
+:key="seat.id"
+
+:id="seat.id"
+
+:user="seat.user"
+
+:task="seat.task"
+
+/>
+
+</div>
+
+</main>
 </template>
 
 <script setup lang="ts">
 
-import SeatCard from "./components/SeatCard.vue"
+import SeatCard from './components/SeatCard.vue'
+
+const seats = Array.from({ length:16 }, (_, i) => ({
+
+id:i+1,
+
+user:"Empty",
+
+task:"待機中"
+
+}))
 
 </script>
 
 <style scoped>
 
-main {
+    main {
 
-  min-height: 100vh;
+        min-height: 100vh;
 
-  background: #111827;
+        background: #111827;
 
-  color: white;
+        color: white;
 
-  display: flex;
+        display: flex;
 
-  flex-direction: column;
+        flex-direction: column;
 
-  align-items: center;
+        align-items: center;
 
-  justify-content: center;
+        min-height:100vh;
 
-  gap: 12px;
+        padding:40px;
 
-}
+        gap:24px;
 
-h1 {
+    }
 
-  font-size: 48px;
+    h1 {
 
-}
+        font-size: 48px;
+
+    }
+
+    .grid {
+
+        display: grid;
+
+        grid-template-columns: repeat(4, 1fr);
+
+        gap: 20px;
+
+    }
 
 </style>
